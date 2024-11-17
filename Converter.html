@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <style>
+        table, th, td {
+            border: 3px solid black;
+            border-collapse: collapse;
+            text-align: center;
+}
+
+body {
+            text-align: left;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+<table  style="width:100%">
+    <tr>
+    <td>
+   <form>
+    <label for="entrada1"style="font-size:150%;">Inserir em graus Celsius</label>
+        <input type="number" id="entrada1" required>
+        <button type="button" onclick="mostrarFar()">Calcular em Farenheit</button>
+   </form></td>
+<td>
+   <p id="resultado1"></p>
+   <br></br>
+    </td>
+</tr>
+
+<tr>
+<td>
+   <form>
+    <label for="entrada2"style="font-size:150%;">Inserir em graus Farenheit</label>
+        <input type="number" id="entrada2" required>
+        <button type="button" onclick="mostrarCel()">Calcular em Celsius</button>
+   </form></td>
+<td>
+<p id="resultado2"></p>
+<br></br>
+</td>
+</tr>
+
+<tr>
+<td>
+    <br>
+<form>
+    <label for="entrada3"style="font-size:150%;">Inserir em graus Celsius</label>
+        <input type="number" id="entrada3" required>
+        <button type="button" onclick="mostrarKel()">Calcular em Kelvin</button>
+   </form>
+<br></td>
+   <td>
+<p id="resultado3"></p>
+</td></tr>
+
+<tr>
+    <td>
+    <br>
+    <form>
+        <label for="entrada4"style="font-size:150%;">Inserir em graus Kelvin</label>
+            <input type="number" id="entrada4"  placeholder="Inserir temperatura" oninput="mostrarCel1()">
+       </form><br></td>
+       <br>
+       <td>
+    <div id="resultado4"></div></td>
+        
+</tr>
+
+<tr>
+    <td>
+    <br>
+    <form>
+        <label for="entrada5"style="font-size:150%;">Inserir em graus Fahrenheit</label>
+        <input type="number" id="entrada5"  placeholder="Inserir temperatura" oninput="mostrarFar1()">
+       </form>
+    <br></td>
+<td><div id="resultado5"></div>
+</td>
+</tr>
+
+<tr>
+    <td>
+    <br>
+    <form>
+        <label for="entrada6"style="font-size:150%;">Inserir em graus Kelvin</label>
+        <input type="number" id="entrada6"  placeholder="Inserir temperatura" oninput="mostrarKel1()">
+       </form>
+    <br></td>
+<td><div id="resultado6"></div>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/celsius-to-fahrenheit.php">Conversor de Celcius para Farenheit</a>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/fahrenheit-to-celsius.php">Conversor de Farenheit para Celsius</a>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/celsius-to-kelvin.php">Conversor de Celsius para Kelvin</a>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/kelvin-to-celsius.php">Conversor de Kelvin para Celsius</a>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/fahrenheit-to-kelvin.php">Conversor de Farenheit para Kelvin</a>
+<br>
+<br>
+<a href="https://www.calculatorsoup.com/calculators/conversions/kelvin-to-fahrenheit.php">Conversor de Kelvin para Farenheit</a>
+<br>
+<br>
+<br>
+
+<script>
+    function mostrarFar() {
+            const numero1 = parseFloat(prompt(document.getElementById('entrada1').value));
+            const res1 = numero1 * 1.8 + 32;
+            document.getElementById('resultado1').textContent = `${numero1} se convertido a graus Farenheit é ${res1.toFixed(2)}.`;
+            if (numero1 < 15) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (numero1 > 40 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+
+    function mostrarCel() {
+            const numero2 = parseFloat(document.getElementById('entrada2').value);
+            const res2 = (numero2 - 32) * 1.8;
+            document.getElementById('resultado2').textContent = `${numero2} se convertido a graus Celsius é ${res2.toFixed(2)}.`;
+            if (res2 < 15) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (res2 > 40 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+
+        function mostrarKel() {
+            const numero3 = parseFloat(document.getElementById('entrada3').value);
+            const res3= numero3 + 273.15;
+            document.getElementById('resultado3').textContent = `${numero3} se convertido a graus Kelvin é ${res3.toFixed(2)}.`;
+            if (numero3 < 15) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (numero3 > 40 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+ 
+        function mostrarCel1() {
+            const entrada4Input = document.getElementById('entrada4');
+            const entrada4 = parseFloat(entrada4Input.value);
+            if (isNaN(entrada4)) {
+                document.getElementById('resultado4').textContent = '';
+                document.body.style.backgroundColor = '';
+                return;
+            }
+
+            const res4 = entrada4 - 273.15;
+            const res4Div = document.getElementById('resultado4')
+            res4Div.textContent = `${entrada4} se convertido a graus Celcius é ${res4.toFixed(2)}.`;
+            if (res4 < 15) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (res4 > 40 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+
+        function mostrarFar1() {
+            const entrada5Input = document.getElementById('entrada5');
+            const entrada5 = parseFloat(entrada5Input.value);
+            if (isNaN(entrada5)) {
+                document.getElementById('resultado5').textContent = '';
+                document.body.style.backgroundColor = '';
+                return;
+            }
+
+            const res5 = (entrada5 + 459.67) * 5 / 9;
+            const res5Div = document.getElementById('resultado5')
+            res5Div.textContent = `${entrada5} se convertido a graus Kelvin é ${res5.toFixed(2)}.`;
+            if (res5 < 289) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (res5 > 314 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+
+        function mostrarKel1() {
+            const entrada6Input = document.getElementById('entrada6');
+            const entrada6 = parseFloat(entrada6Input.value);
+            if (isNaN(entrada6)) {
+                document.getElementById('resultado6').textContent = '';
+                document.body.style.backgroundColor = '';
+                return;
+            }
+            const res6 = entrada6 * 1.8 - 459.67;
+            const res6Div = document.getElementById('resultado6')
+            res6Div.textContent = `${entrada6} se convertido a graus Farenheit é ${res6.toFixed(2)}.`;
+
+            if (entrada6 < 289) {
+                document.body.style.backgroundColor = '#19bdc0';
+            } else if (entrada6 > 314 ) {
+                document.body.style.backgroundColor = '#ff3f3f';
+            } else {
+                document.body.style.backgroundColor = '#fbff00';
+            }
+        }
+
+</script>
+</body>
+</html>
